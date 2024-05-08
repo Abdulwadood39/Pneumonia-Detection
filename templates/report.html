@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pneumonia Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="center-logo">
+            <a href="/index" class="nav-button">Home</a>
+            <a href="/about_us" class="nav-button">PX-Team</a>
+        </div>
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo">
+            </a>
+        </div>
+        <p>{{username if username else 'Guest' }}</p>
+        <div class="login-signup">
+            <a href="/logout" class="nav-button">Logout</a>
+        </div>
+    </div>
+
+    <!-- PneumoXpert heading -->
+    <div class="spacer"></div>
+    <h1 class="h1centre">PneumoXpert</h1>
+    <!-- Health Questionnaire -->
+    <h1 class="h1centre">Health Questionnaire</h1>
+
+    <div class="questionnaire-container" >
+        <form method="POST" action="/report" enctype="multipart/form-data">
+
+            <p>1. What symptoms are you experiencing?</p>
+            <input type="checkbox" name="symptoms[]" value="Cough"> Cough<br>
+            <input type="checkbox" name="symptoms[]" value="Fever"> Fever<br>
+            <input type="checkbox" name="symptoms[]" value="Shortness of Breath"> Shortness of Breath<br>
+            <input type="checkbox" name="symptoms[]" value="Chest Pain"> Chest Pain<br>
+            <input type="checkbox" name="symptoms[]" value="Fatigue"> Fatigue<br>
+            <input type="checkbox" name="symptoms[]" value="Other"> Other (please specify): <input type="text" name="symptoms[]"><br>
+
+            <p>(b) How long have you had these symptoms?</p>
+            <input type="text" name="symptom_duration"><br>
+
+            <p>2. Are you experiencing any difficulty breathing or rapid breathing?</p>
+            <input type="radio" name="breathing_difficulty" value="Yes"> Yes<br>
+            <input type="radio" name="breathing_difficulty" value="No"> No<br>
+
+            <p>3. Are you coughing up mucus or phlegm?</p>
+            <input type="radio" name="coughing_mucus" value="Yes"> Yes<br>
+            <input type="radio" name="coughing_mucus" value="No"> No<br>
+
+            <p>If so, what color and consistency?</p>
+            <input type="text" name="mucus_color_consistency"><br>
+
+            <p>4. Are you experiencing any chest pain?</p>
+            <input type="radio" name="chest_pain" value="Yes"> Yes<br>
+            <input type="radio" name="chest_pain" value="No"> No<br>
+
+            <p>If so, can you describe the type and location?</p>
+            <textarea name="chest_pain_description" rows="4" cols="50"></textarea><br>
+
+            <p>5. Do you have any underlying medical conditions?</p>
+            <input type="checkbox" name="medical_conditions[]" value="Asthma"> Asthma<br>
+            <input type="checkbox" name="medical_conditions[]" value="COPD"> COPD<br>
+            <input type="checkbox" name="medical_conditions[]" value="Heart Disease"> Heart Disease<br>
+            <input type="checkbox" name="medical_conditions[]" value="Other"> Other (please specify): <input type="text" name="other_conditions"><br>
+
+            <p>6. Do you smoke?</p>
+            <input type="radio" name="smoking" value="Yes"> Yes<br>
+            <input type="radio" name="smoking" value="No"> No<br>
+
+            <p>If yes, how much and for how long?</p>
+            <textarea name="smoking_details" rows="4" cols="50"></textarea><br>
+
+            <p>7. Is there a history of pneumonia or lung infections in your family?</p>
+            <input type="radio" name="family_history" value="Yes"> Yes<br>
+            <input type="radio" name="family_history" value="No"> No<br>
+
+            <br>
+            <br>
+
+        
+        </div>
+        <div class="upload-container">
+            <div class="image-container">
+                <img id="uploadedImage" src="#" alt="Uploaded Image" style="display: none;">
+            </div>
+            <div class="upload-container">
+                <input type="file" id="imageInput" name="file" accept="image/*" required>
+                <label for="imageInput">
+                    <span>Upload Image</span>
+                </label>
+            </div>
+
+            <button type="submit">Submit</button>
+        </div>
+    
+    </form>
+
+    <script>
+        document.getElementById("imageInput").addEventListener("change", function(event) {
+            var uploadedImage = document.getElementById("uploadedImage");
+            uploadedImage.src = URL.createObjectURL(event.target.files[0]);
+            uploadedImage.style.display = "block";
+        });
+    </script>
+</body>
+</html>

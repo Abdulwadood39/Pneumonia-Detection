@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pneumonia Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="center-logo">
+            <a href="/home" class="nav-button">Home</a>
+            <a href="/about_us" class="nav-button">PX-Team</a>
+        </div>
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo">
+            </a>
+        </div>
+        <p>{{username if username else 'Guest' }}</p>
+        <div class="login-signup">
+            <a href="/logout" class="nav-button">Logout</a>
+        </div>
+    </div>
+
+    <h1 class="h1centre">PneumoXpert</h1>
+
+
+        <div>
+        <h3 style="margin-left:10%">Total Doctors: {{DC if DC else 0}}</h3>
+        <h3 style="margin-left:10%">Total Patients: {{UC if UC else 0}}</h3>
+        <h3 style="margin-left:10%">Total Cases: {{C if C else 0}}</h3>
+        <h3 style="margin-left:5%">Pneumonia Detection Comparison</h3>
+
+        <img id="uploadedImage" style="border: 0px; height:320px, width:512; margin-left:5%;margin-top:0%" src="{{ url_for('static', filename='plots/pneumonia_comparison.png') }}" alt="Pneumonia Detection Plot">
+        </div>
+
+
+
+        <div class="center-container">
+            
+            <div class="login-signup-container" style="margin-top: -29%;">
+                <h1>Create a User</h1>
+                <form method="POST" action="/admin">
+                    <input class="form-input" type="text" name="username" placeholder="Username" required oninput="checkUsername()">
+                    <input class="form-input" type="email" name="email" placeholder="Email" required oninput="checkEmail()">
+                    <input class="form-input" type="tel" name="phone" placeholder="Phone Number" required>
+                    <input class="form-input" type="password" name="password" id="password" placeholder="Password" required>
+                    <input class="form-input" type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required onfocus="showPasswordRequirements()">
+                    <p>Select User Type</p>
+                    <input type="radio" name="userType" value="Doctor"> Doctor<br>
+                    <input type="radio" name="userType" value="patient"> Patient<br>
+                    <input type="radio" name="userType" value="admin"> Admin<br>
+
+                    <br>
+
+                    <div id="password-requirements" class="password-requirements-tooltip">*Password must contain 8-15 characters with lowercase, uppercase, and numbers*</div>
+                    <span id="password_match_error" class="error-message"></span>
+                    <span id="username_error" class="error-message"></span>
+                    <span id="email_error" class="error-message"></span>
+                    <br>
+                    <button class="form-button" type="submit">Create New User</button>
+                </form>
+    
+                <p class="error-message">{{ get_flashed_messages() }}</p>
+            </div>
+        </div>
+
+    <script>
+        const passwordInput = document.getElementById("password");
+        const confirmInput = document.getElementById("confirm_password");
+        const passwordMatchError = document.getElementById("password_match_error");
+        const usernameInput = document.getElementsByName("username")[0];
+        const emailInput = document.getElementsByName("email")[0];
+        const usernameError = document.getElementById("username_error");
+        const emailError = document.getElementById("email_error");
+
+        let usernameTimer;
+        let emailTimer;
+
+        function showPasswordRequirements() {
+            const requirementsTooltip = document.getElementById("password-requirements");
+            requirementsTooltip.style.display = "block";
+        }
+
+        function checkUsername() {
+            clearTimeout(usernameTimer);
+            usernameError.textContent = "";
+
+            usernameTimer = setTimeout(function () {
+                const username = usernameInput.value;
+                if (username.length > 0) {
+
+                    // Perform an asynchronous check with the server
+                    fetch(`/check_username?username=${username}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.exists) {
+                                usernameError.textContent = "Username is already in use.";
+                            }
+                        });
+                }
+            }, 500); // Delay the check for 500 milliseconds after the user stops typing
+        }
+
+        function checkEmail() {
+            clearTimeout(emailTimer);
+            emailError.textContent = "";
+
+            emailTimer = setTimeout(function () {
+                const email = emailInput.value;
+                if (email.length > 0) {
+                    // Perform an asynchronous check with the server
+                    fetch(`/check_email?email=${email}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.exists) {
+                                emailError.textContent = "Email is already in use.";
+                            }
+                        });
+                }
+            }, 500); // Delay the check for 500 milliseconds after the user stops typing
+        }
+
+        confirmInput.addEventListener("input", () => {
+            if (passwordInput.value !== confirmInput.value) {
+                passwordMatchError.textContent = "Passwords do not match.";
+            } else {
+                passwordMatchError.textContent = "";
+            }
+        });
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM - Pneumonia Detector</title>
+    <!-- Add your CSS styling here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="center-logo">
+            <a href="/home" class="nav-button">Home</a>
+        </div>
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo">
+            </a>
+        </div>
+        <div class="login-signup">
+            <a href="/login" class="nav-button">Login/Signup</a>
+        </div>
+    </div>
+    <header>
+        <h1 class="h1centre">PneumoXpert Team</h1>
+    </header>
+
+    <section class="partners">
+        <div class="partner">
+            <img src="{{ url_for('static', filename='Mehar.jpg') }}" alt="Partner 1">
+            <h2>Mehar Ali Shah</h2>
+        </div>
+        <div class="partner">
+            <img src="{{ url_for('static', filename='Kinza.jpeg') }}" alt="Partner 2">
+            <h2>Kinza Fiaz</h2>
+
+        </div>
+        <div class="partner">
+            <img src="{{ url_for('static', filename='Neha.jpeg') }}" alt="Partner 3">
+            <h2>Neha Amina</h2>
+        </div>
+    </section>
+
+</body>
+</html>

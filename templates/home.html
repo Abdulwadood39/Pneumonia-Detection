@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pneumonia Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <div class="navbar">
+        <div class="center-logo">
+            <a href="/home" class="nav-button">Home</a>
+            <a href="/about_us" class="nav-button">PX-Team</a>
+        </div>
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo">
+            </a>
+        </div>
+        <div class="login-signup">
+            <a href="/login" class="nav-button">Login/Signup</a>
+        </div>
+    </div>
+    
+    
+
+    <section >
+        
+        <h2>About Us</h2>
+        <p class =>
+            Our mission is to provide a simple and effective tool for detecting pneumonia in chest X-ray images.
+            Pneumonia is a severe lung infection that can have life-threatening consequences if not detected and
+            treated early. Our product leverages advanced machine learning techniques to assist healthcare
+            professionals and improve the accuracy and speed of diagnosis.
+        </p>
+    </section>
+
+    <section class="motivation">
+        <h2>Our Motivation</h2>
+        <p>
+            The motivation behind our product is to make pneumonia detection accessible and affordable to
+            everyone. We aim to bridge the gap in healthcare by providing a tool that can be used in various
+            healthcare settings, from well-equipped hospitals to remote clinics. Early detection of pneumonia
+            can save lives, and we believe that technology can play a crucial role in achieving this goal.
+        </p>
+    </section>
+
+    <section class="features">
+        <h2>Key Features</h2>
+        <ul>
+            <li>Fast and accurate pneumonia detection</li>
+            <li>User-friendly interface for easy image upload</li>
+            <li>Access to historical scan results for tracking progress</li>
+            <!-- Add more features here -->
+        </ul>
+    </section>
+
+    
+</body>
+</html>

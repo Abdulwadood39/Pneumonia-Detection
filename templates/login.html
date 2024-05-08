@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="center-logo">
+            <a href="/home" class="nav-button">Home</a>
+            <a href="/about_us" class="nav-button">PX-Team</a>
+        </div>
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo">
+            </a>
+        </div>
+        <p>Don't have an account?</p>
+        <div class="login-signup">
+            <a href="/signup" class="nav-button">Signup</a>
+        </div>
+    </div>
+
+
+    <div class="center-container">
+        <div class="login-signup-container">
+            <h1 align="center">Login</h1>
+            <form method="POST" action="/login">
+                <input class="form-input" type="email" name="email" placeholder="Email" required>
+                <input class="form-input" type="password" name="password" placeholder="Password" required>
+                <button class="form-button" type="submit"><b>Log In</b></button>
+            </form>
+            <p class="error-message">{{ get_flashed_messages() }}</p>
+            
+        </div>
+    </div>
+</body>
+</html>

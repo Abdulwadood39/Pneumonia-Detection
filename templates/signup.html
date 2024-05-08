@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="center-logo">
+            <a href="/home" class="nav-button">Home</a>
+            <a href="/about_us" class="nav-button">PX-Team</a>
+        </div>
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo">
+            </a>
+        </div>
+        <p>Already have an account? </p>
+        <div class="login-signup">
+            <a href="/login" class="nav-button">login</a>
+        </div>
+    </div>
+
+    <div class="center-container">
+
+        <div class="login-signup-container">
+            <h1>Sign Up</h1>
+            <form method="POST" action="/signup">
+                <input class="form-input" type="text" name="username" placeholder="Username" required oninput="checkUsername()">
+                <input class="form-input" type="email" name="email" placeholder="Email" required oninput="checkEmail()">
+                <input class="form-input" type="tel" name="phone" placeholder="Phone Number" required>
+                <input class="form-input" type="password" name="password" id="password" placeholder="Password" required>
+                <input class="form-input" type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required onfocus="showPasswordRequirements()">
+                <div id="password-requirements" class="password-requirements-tooltip">*Password must contain 8-15 characters with lowercase, uppercase, and numbers*</div>
+                <span id="password_match_error" class="error-message"></span>
+                <span id="username_error" class="error-message"></span>
+                <span id="email_error" class="error-message"></span>
+                <br>
+                <button class="form-button" type="submit">Sign Up</button>
+            </form>
+
+            <p class="error-message">{{ get_flashed_messages() }}</p>
+        </div>
+    </div>
+    <script>
+        const passwordInput = document.getElementById("password");
+        const confirmInput = document.getElementById("confirm_password");
+        const passwordMatchError = document.getElementById("password_match_error");
+        const usernameInput = document.getElementsByName("username")[0];
+        const emailInput = document.getElementsByName("email")[0];
+        const usernameError = document.getElementById("username_error");
+        const emailError = document.getElementById("email_error");
+
+        let usernameTimer;
+        let emailTimer;
+
+        function showPasswordRequirements() {
+            const requirementsTooltip = document.getElementById("password-requirements");
+            requirementsTooltip.style.display = "block";
+        }
+
+        function checkUsername() {
+            clearTimeout(usernameTimer);
+            usernameError.textContent = "";
+
+            usernameTimer = setTimeout(function () {
+                const username = usernameInput.value;
+                if (username.length > 0) {
+
+                    // Perform an asynchronous check with the server
+                    fetch(`/check_username?username=${username}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.exists) {
+                                usernameError.textContent = "Username is already in use.";
+                            }
+                        });
+                }
+            }, 500); // Delay the check for 500 milliseconds after the user stops typing
+        }
+
+        function checkEmail() {
+            clearTimeout(emailTimer);
+            emailError.textContent = "";
+
+            emailTimer = setTimeout(function () {
+                const email = emailInput.value;
+                if (email.length > 0) {
+                    // Perform an asynchronous check with the server
+                    fetch(`/check_email?email=${email}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.exists) {
+                                emailError.textContent = "Email is already in use.";
+                            }
+                        });
+                }
+            }, 500); // Delay the check for 500 milliseconds after the user stops typing
+        }
+
+        confirmInput.addEventListener("input", () => {
+            if (passwordInput.value !== confirmInput.value) {
+                passwordMatchError.textContent = "Passwords do not match.";
+            } else {
+                passwordMatchError.textContent = "";
+            }
+        });
+    </script>
+</body>
+</html>

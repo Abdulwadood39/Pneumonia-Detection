@@ -1,0 +1,55 @@
+<!-- display_report.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style type="text/css">
+        /* Hide the link only in the PDF */
+        @media print {
+            .hide-in-pdf {
+                display: none !important;
+            }
+        }
+    </style>
+    <script>
+        function downloadReportAsPDF(reportId) {
+            // Redirect to the route that downloads the report as PDF
+            window.location.href = `/download_report_as_pdf/${reportId}`;
+            // Redirect to index.html after 5 seconds
+            setTimeout(function() {
+                window.location.href = "/index";
+            }, 5000);
+        }
+
+        
+    </script>
+</head>
+<body>
+    <div class="center-container">
+    <div class="login-signup-container">
+
+    <h1>Report Details</h1>
+    <p>Report ID: {{ report[1][0] }}</p>
+    <p>Report TimeStamp: {{ report[1][1] }}</p>
+    <p>User ID: {{ report[0].U_ID }}</p>
+    <p>symptoms: {{ report[0].symptoms }}</p>
+    <p>symptom_duration: {{ report[0].symptom_duration }}</p>
+    <p>breathing_difficulty: {{ report[0].breathing_difficulty }}</p>
+    <p>coughing_mucus: {{ report[0].coughing_mucus }}</p>
+    <p>mucus_color_consistency: {{ report[0].mucus_color_consistency }}</p>
+    <p>chest_pain: {{ report[0].chest_pain }}</p>
+    <p>chest_pain_description: {{ report[0].chest_pain_description }}</p>
+    <p>medical_conditions: {{ report[0].medical_conditions }}</p>
+    <p>smoking: {{ report[0].smoking }}</p>
+    <p>smoking_details: {{ report[0].smoking_details }}</p>
+    <p>family_history: {{ report[0].family_history }}</p>
+    <h2>result: {{ report[0].result }}</h2>
+    <h3>Prescription: {{report[1][2]}}</h3>
+
+    <!-- This link will trigger the download and redirection -->
+    <button class="form-button" onclick="downloadReportAsPDF({{ report[1][0] }})">Download as PDF</button>
+    </div>
+</div>
+</body>
+</html>

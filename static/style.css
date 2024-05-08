@@ -1,0 +1,398 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('./BG.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.table-container {
+    height: 300px;
+    /* Set the desired height */
+    overflow-y: auto;
+    /* Enable vertical scrollbar */
+}
+
+.container {
+    width: 48%;
+    max-width: 25%;
+    margin: 0;
+    padding: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+    height: 275px;
+    text-align: center;
+    color: #2a798f;
+    align-items: center;
+    margin: auto;
+}
+
+.container p {
+    margin-top: 0;
+    margin-bottom: 15%;
+    font-size: 24px;
+}
+
+.container a {
+    color: #022631;
+    text-decoration: underline;
+    /* bold text */
+    font-weight: bold;
+}
+
+.h1centre {
+    text-align: center;
+    color: #0d3245;
+    margin-bottom: 30px;
+    font-size: 34px;
+}
+
+label {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+label:hover {
+    background-color: #45a049;
+}
+
+label span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    padding: 8px 18px;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+a {
+    display: block;
+    text-align: left;
+    color: #506351;
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 20px;
+    transition: color 0.3s ease;
+    max-width: 100%;
+    text-align: center;
+}
+
+a:hover {
+    color: #bebfbe;
+}
+
+.spacer {
+    height: 70px;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 80vh; */
+    text-align: center;
+    
+}
+
+.questionnaire-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.questionnaire-container form {
+    column-count: 2;
+    column-gap: 60px;
+    column-rule: 3px solid #0d3245;
+}
+
+.questionnaire-container button {
+    width: 20%;
+    /* Make the button span the entire width */
+    column-span: all;
+    /* Span across all columns */
+    margin-top: 10px;
+    /* Add some space at the top */
+}
+
+
+/* Container for login/signup forms */
+
+.login-signup-container {
+    /* background-color: #ffffff; */
+    border: 3px solid #389c9f;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 25px;
+    max-width: 400px;
+    color: #084547;
+    margin-top: 10%;
+}
+
+
+/* Form input fields */
+
+.form-input {
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    align-content: center;
+    color: #000000
+}
+
+
+/* Form buttons */
+
+.form-button {
+    background-color: #084547;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-content: center;
+}
+
+.form-button:hover {
+    background-color: #45a049;
+    align-content: center;
+}
+
+
+/* Error messages */
+
+.error-message {
+    color: rgb(136, 17, 17);
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+#password-requirements {
+    color: rgb(136, 17, 17);
+    padding-bottom: 10px;
+}
+
+
+/* Links */
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.upload-container {
+    text-align: left;
+    align-items: center;
+    margin-top: 2%;
+    align-content: center;
+    vertical-align: middle;
+    align-self: center;
+    /* adjust button alignment */
+}
+
+.upload-container {
+    text-align: center;
+    margin: auto;
+    align-items: center;
+    align-content: center;
+    vertical-align: middle;
+    align-self: center;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+#uploadedImage {
+    width: 256px;
+    /* Add this line to set the width */
+    height: 256px;
+    border: 1px solid #b0ecb2;
+    align-self: center;
+    margin: auto;
+    margin-top: 3%;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+
+/* Style for the navbar container */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    height: 75px;
+    padding: 10px 20px;
+}
+
+.navbar p {
+    margin-top: auto;
+    padding: 0px 20px;
+    color: #389c9f;
+}
+
+
+/* Style for the logo */
+
+.navbar img {
+    max-height: 90px;
+    margin: 0;
+}
+
+
+/* Style for the navigation buttons and login/signup button */
+
+.nav-button {
+    text-decoration: none;
+    padding: 7px 15px;
+    background-color: #525050;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    color: #000;
+    background-color: #a6a8aa;
+}
+
+.center-logo {
+    display: flex;
+    gap: 20px;
+}
+
+.logo {
+    flex: 1;
+    text-align: center;
+}
+
+.login-signup {
+    text-align: right;
+}
+
+
+/* Style for the sections */
+
+section {
+    position: relative;
+    margin: 25px auto;
+    padding: 15px;
+    width: 50%;
+    text-align: justify;
+    color: #022631;
+}
+
+
+/* Style for section headers (h2) */
+
+section h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #262626;
+    margin-bottom: 10px;
+    margin-left: auto;
+}
+
+section p {
+    font-size: 24px;
+}
+
+section ul {
+    font-size: 24px;
+    line-height: 1.5;
+    padding-left: 20px;
+    margin-left: 20%;
+    width: 60%;
+}
+
+section li {
+    list-style-type: disc;
+    margin-bottom: 5px;
+}
+
+
+/* Style for the partners section */
+
+.partners {
+    display: flex;
+    /* Display partners in a row */
+    justify-content: space-around;
+    /* Distribute partners evenly */
+    flex-wrap: wrap;
+    /* Allow partners to wrap to the next line if needed */
+    /* background-color: #f5f5f5; */
+    /* Background color for the section */
+    padding: 20px;
+    /* Add padding to provide spacing around content */
+}
+
+
+/* Style for individual partner containers */
+
+.partner {
+    flex-basis: calc(33.33% - 20px);
+    /* Set the width of each partner with some spacing */
+    text-align: center;
+    /* Center-align content within each partner container */
+    margin: 10px;
+    /* Add margin to separate partners */
+}
+
+
+/* Style for partner images */
+
+.partner img {
+    max-width: 150px;
+    /* Set the maximum width for the image */
+    max-height: 150px;
+    /* Set the maximum height for the image */
+    width: auto;
+    /* Allow the width to adjust proportionally to the max-width */
+    height: auto;
+    /* Allow the height to adjust proportionally to the max-height */
+    /* border-radius: 50%; */
+    /* Make the image circular */
+}
+
+
+/* Style for partner names (h2) */
+
+.partner h2 {
+    font-size: 28px;
+    /* Adjust the font size as needed */
+    color: #284c5e;
+    /* Text color for partner names */
+    margin-top: 10px;
+    /* Spacing above partner names */
+}

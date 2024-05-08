@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pneumonia Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="center-logo">
+            <a href="/home" class="nav-button">Home</a>
+            <a href="/about_us" class="nav-button">PX-Team</a>
+        </div>
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo">
+            </a>
+        </div>
+        <p>{{username if username else 'Guest' }}</p>
+        <div class="login-signup">
+            <a href="/logout" class="nav-button">Logout</a>
+        </div>
+    </div>
+
+    <!-- PneumoXpert heading -->
+    <div class="spacer"></div>
+    <h1 class="h1centre">PneumoXpert</h1>
+    <h1 class="h1centre">Classifying X-Ray or Not</h1>
+
+    <div class="center-container">
+        <form action="/report">
+        <button type="submit" class="form-button">Generate New Report</button>
+        </form>
+        
+    </div>
+    <div class="center-container">
+    <div class="login-signup-container">
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Report ID</th>
+                <th>Report Timestamp</th>
+                <th>Result</th>
+                <th>Comment</th>
+                <th>View Report</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if user_reports %}
+                {% for i in user_reports %}
+                    <tr>
+                        <td>{{ i[0] }}</td>
+                        <td>{{ i[1] }}</td>
+                        <td>{{ i[-2].replace("Pneumonia Not Detected.","Negative").replace("Pneumonia Detected.","Positive")}}</td>
+                        <td>{{ i[-1]}}</td>
+                        <td><a href="{{ url_for('display_report', report_id=i[0]) }}">View</a></td>
+
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">No reports found</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+    
+</body>
+</html>
