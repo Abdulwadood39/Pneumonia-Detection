@@ -20,28 +20,24 @@ This project is a web application designed to facilitate the processing and visu
    ```
    git clone https://github.com/Abdulwadood39/Pneumonia-Detection.git
    ```
-
 2. **Navigate to the project directory**:
 
    ```
    cd Pneumonia-Detection
    ```
-
 3. **Install the required packages**:
 
    ```
    pip install -r requirements.txt
    ```
-
 4. **Set up the database** (if applicable):
 
    - Follow the instructions in `database.py` to set up the database.
    - Read the comments at the top of the file.
-
 5. **Download Models:**
 
    - Drive Link: [Models](https://drive.google.com/drive/folders/1tfgOim7M0FWiJB4sizWSET-SAToytTdx?usp=sharing)
-
+   - place the models in directory Pneumonia-Detection/models
 6. **Run the application**:
 
    ```
