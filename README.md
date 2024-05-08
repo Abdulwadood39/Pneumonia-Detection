@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a web application designed to facilitate the processing and visualization of medical data. It aims to provide a platform where users can interact with medical data, view reports, and potentially classify medical images for diagnostic purposes.
+This project is a web application designed to facilitate the processing and visualization of medical data specifically X-Ray Images. It aims to provide a platform where users can interact with medical data, view reports, and potentially classify medical images for diagnostic purposes.
 
 ## Technologies and Frameworks
 
@@ -18,13 +18,13 @@ This project is a web application designed to facilitate the processing and visu
 1. **Clone the repository**:
 
    ```
-   git clone <repository_url>
+   git clone https://github.com/Abdulwadood39/Pneumonia-Detection.git
    ```
 
 2. **Navigate to the project directory**:
 
    ```
-   cd <project_directory>
+   cd Pneumonia-Detection
    ```
 
 3. **Install the required packages**:
@@ -36,8 +36,14 @@ This project is a web application designed to facilitate the processing and visu
 4. **Set up the database** (if applicable):
 
    - Follow the instructions in `database.py` to set up the database.
+   - Read the comments at the top of the file.
 
-5. **Run the application**:
+5. **Download Models:**
+
+   - Drive Link: [Models](https://drive.google.com/drive/folders/1tfgOim7M0FWiJB4sizWSET-SAToytTdx?usp=sharing)
+
+6. **Run the application**:
+
    ```
    python app.py
    ```

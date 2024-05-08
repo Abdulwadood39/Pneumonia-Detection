@@ -3,6 +3,9 @@ from UsersData import *
 #support regular expression
 import re
 
+######
+    # Admin can only be created by uncommenting line 69 in code
+######
 
 #name of database
 DB_FILE = 'database.db'
